@@ -10,7 +10,9 @@
 
         <div class="col">
           <div class="card h-100">
-            <img src="{{ flan.image_url }}" height="150px" class="card-img-top" alt="{{ flan.slug }}">
+            <a href="{% url 'flan_details' flan.id %}">
+              <img src="{{ flan.image_url }}" height="150px" class="card-img-top" alt="{{ flan.slug }}">
+            </a>
             <div class="card-body">
               <h5 class="card-title">{{ flan.name }}</h5>
               <p class="card-text text-justify">
