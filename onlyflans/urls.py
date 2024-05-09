@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from web.views import contact_view, contact_view_exito, index, about, welcome, contacto
+from web.views import contact_view, contact_view_exito, flan_details, index, about, welcome, contacto, CustomRegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,10 @@ urlpatterns = [
     path('contacto/', contacto, name='contacto'),
     path('contact_form/', contact_view, name='contact_form'),
     path('contacto_exitoso/', contact_view_exito, name='contacto_exitoso'),
+    path('accounts/', include("django.contrib.auth.urls")),
+    path("register/", CustomRegisterView, name="register"),
+    path('flan/<int:flan_id>/', flan_details, name="flan_details"),
+    #path('accounts/login/', include("django.contrib.auth.urls"), name="login"),
 
-    path('web/', include("web.urls"))
+    #path('web/', include("web.urls"))
 ]
