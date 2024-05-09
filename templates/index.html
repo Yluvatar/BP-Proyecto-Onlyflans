@@ -4,70 +4,36 @@
 {% block 'content' %}
 
 <section class="container mx-auto pt-5">
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
 
-        {% for flan in flanes %}
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
 
-        <div class="col">
-          <div class="card h-100">
-            <a href="{% url 'flan_details' flan.id %}">
-              <img src="{{ flan.image_url }}" height="150px" class="card-img-top" alt="{{ flan.slug }}">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title">{{ flan.name }}</h5>
-              <p class="card-text text-justify">
-                {% if flan.description|length > 100 %}
-                  {{ flan.description|slice:":100" }} ... <a href="#">Leer mas</a>
-                {% else %}
-                  {{ flan.description }}
-                {% endif %}
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-body-secondary">Last updated 3 mins ago</small>
-            </div>
-          </div>
+    {% for flan in flanes %}
+
+    <div class="col">
+      <div class="card h-100">
+        <a href="{% url 'flan_details' flan.id %}">
+          <img src="{{ flan.image_url }}" height="150px" class="card-img-top" alt="{{ flan.slug }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ flan.name }}</h5>
+          <p class="card-text text-justify">
+            {% if flan.description|length > 100 %}
+              {{ flan.description|slice:":100" }} ... <a href="#">Leer mas</a>
+            {% else %}
+              {{ flan.description }}
+            {% endif %}
+          </p>
         </div>
-
-        {% endfor %}
-
-        <!--div class="col">
-            <div class="card h-100">
-              <img src="{% static 'img/flan1.jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Flan de Vainilla</h5>
-                <p class="card-text text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-body-secondary">Last updated 3 mins ago</small>
-              </div>
-            </div>
-          </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="{% static 'img/flan2.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Flan de Chocolate</h5>
-              <p class="card-text text-justify">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-body-secondary">Last updated 3 mins ago</small>
-            </div>
-          </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="{% static 'img/flan3.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Tartaletas de flan parisien con chocolate fundido</h5>
-              <p class="card-text text-justify">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-body-secondary">Last updated 3 mins ago</small>
-            </div>
-          </div>
-        </div>
-      </div-->
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
 </section>
 
 {% endblock 'content' %}

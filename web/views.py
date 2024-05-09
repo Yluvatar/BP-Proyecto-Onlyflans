@@ -1,9 +1,14 @@
 from django.shortcuts import redirect, render, get_object_or_404
-
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 from web.models import Flan
 from web.forms import ContactForm
+from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import authenticate
+from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -45,6 +50,34 @@ def contact_view_exito(request):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
+
+
+def CustomRegisterView(request):
+    if request.method=='POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        firstname = request.POST.get('fname')
+        lastname = request.POST.get('lname')
+        username = request.POST.get('uname')
+        if  password != password2:
+            messages.warning(request,'Las contraseñas no coinciden!')
+            return redirect('register')
+        if User.objects.filter(email=email).exists():
+            messages.warning(request,'El Email ya existe!')
+            return redirect('register')
+        else:
+            user = User(email=email,password=password,first_name=firstname,
+            last_name=lastname,username=username)
+            user.set_password(password)
+            user.save()
+            new_user = authenticate(username=username,
+                                    password=password,
+                                    )
+            login(request, new_user)
+
+            return redirect('index')
+    return render(request, 'registration/register.html')
 
 
 class CustomLogoutView(LogoutView):
