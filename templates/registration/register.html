@@ -7,6 +7,8 @@
             <h2>Registro Usuario</h2>
         </div>
 
+        {% include "includes/errors.html" %}
+
         <form class="col-6 mx-auto card p-3 shadow-lg mt-3" method="post" enctype="multipart/form-data"><!--use for enctype data image-->
             {% csrf_token %}
             <div class="mb-3">
@@ -22,7 +24,7 @@
                     <div class="form-group col-md-6">
                         <label for="inputPassword5">Password</label>
                         <input type="password" required class="form-control" id="inputPassword5" placeholder="Password" name='password2'>
-                      </div>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
