@@ -6,7 +6,6 @@ from web.forms import ContactForm
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate
-from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 
@@ -64,13 +63,17 @@ def CustomRegisterView(request):
             messages.warning(request,'Las contraseñas no coinciden!')
             return redirect('register')
         if User.objects.filter(email=email).exists():
-            messages.warning(request,'El Email ya existe!')
+            messages.error(request,'El Email ya existe!')
+            return redirect('register')
+        if User.objects.filter(username=username).exists():
+            messages.error(request,'El usuario ya existe!')
             return redirect('register')
         else:
             user = User(email=email,password=password,first_name=firstname,
             last_name=lastname,username=username)
             user.set_password(password)
             user.save()
+            messages.success(request, "Bienvenido a Only Flans " + firstname)
             new_user = authenticate(username=username,
                                     password=password,
                                     )
