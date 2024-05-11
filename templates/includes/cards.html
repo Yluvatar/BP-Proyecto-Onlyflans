@@ -1,0 +1,24 @@
+{% for item in items %}
+
+    <div class="col">
+      <div class="card h-100">
+        <a href="{% url urlHref item.id %}">
+          <img src="{{ item.image_url }}" height="150px" class="card-img-top" alt="{{ item.slug }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ flan.name }}</h5>
+          <p class="card-text text-justify">
+            {% if item.description|length > 100 %}
+              {{ item.description|slice:":100" }} ... <a href="#">Leer mas</a>
+            {% else %}
+              {{ item.description }}
+            {% endif %}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Valor: ${{ item.precio|floatformat:'-3g' }}</small>
+        </div>
+      </div>
+    </div>
+
+{% endfor %}
