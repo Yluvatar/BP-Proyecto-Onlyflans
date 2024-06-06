@@ -1,0 +1,5 @@
+DATABASE_NAME='database1'
+DATABASE_USER='apps_db_bfoe_user'
+DATABASE_PASSWORD='rGRJx8Wa1bOsvkA6oKb2zOPXij3Qd0Dq'
+SECRET_KEY = 'django-insecure-cso(vl6mexet8pj-eze!0=)dg2e9urqxmzxbc=!&yhqty&6$qn'
+HOST_NAME='dpg-cpgge0u3e1ms73afihq0-a'
