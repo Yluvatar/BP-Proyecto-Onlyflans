@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'bp-proyecto-onlyflans.onrender.com/']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'bp-proyecto-onlyflans.onrender.com/']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'https://bp-proyecto-onlyflans.onrender.com/']
 
 
 # Application definition
